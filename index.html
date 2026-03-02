@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebQuest: Neuroanatomía del Aprendizaje - DBA</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e67e22;
+            --bg: #f4f7f6;
+            --text: #333;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--bg);
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+            padding: 2rem 1rem;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+            background: var(--white);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        /* Tabs System */
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            border-bottom: 2px solid #ddd;
+            margin-bottom: 20px;
+        }
+
+        .tab-link {
+            padding: 12px 20px;
+            cursor: pointer;
+            background: #eee;
+            border: none;
+            outline: none;
+            transition: 0.3s;
+            font-weight: bold;
+            flex: 1 1 auto;
+            text-align: center;
+            border: 1px solid #ddd;
+            border-bottom: none;
+        }
+
+        .tab-link:hover { background: #e0e0e0; }
+        .tab-link.active {
+            background: var(--white);
+            border-top: 4px solid var(--accent);
+            color: var(--accent);
+        }
+
+        .tab-content { display: none; animation: fadeIn 0.5s; }
+        .tab-content.active { display: block; }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        /* Components */
+        .card {
+            border-left: 5px solid var(--secondary);
+            background: #f9f9f9;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+
+        .role-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th { background-color: var(--primary); color: white; }
+
+        .quiz-container { background: #edf2f7; padding: 20px; border-radius: 8px; }
+        .question { margin-bottom: 20px; }
+        button.check-btn {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Neuro-sugerencias */
+        .neuro-box {
+            background: #fff3e0;
+            border: 2px dashed var(--accent);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        iframe { width: 100%; border: none; min-height: 500px; border-radius: 8px; }
+
+        @media (max-width: 600px) {
+            .tab-link { flex: 1 1 100%; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>WebQuest: Dispositivos Básicos del Aprendizaje (DBA)</h1>
+    <p>Maestría en Innovación Educativa - Fundamentos Pedagógicos</p>
+</header>
+
+<div class="container">
+    <div class="tabs">
+        <button class="tab-link active" onclick="openTab(event, 'intro')">Introducción</button>
+        <button class="tab-link" onclick="openTab(event, 'objetivos')">Objetivos</button>
+        <button class="tab-link" onclick="openTab(event, 'tarea')">Tarea</button>
+        <button class="tab-link" onclick="openTab(event, 'proceso')">Proceso</button>
+        <button class="tab-link" onclick="openTab(event, 'recursos')">Recursos</button>
+        <button class="tab-link" onclick="openTab(event, 'evaluacion')">Evaluación</button>
+        <button class="tab-link" onclick="openTab(event, 'neuropedagogia')">Neuro-Sugerencias</button>
+        <button class="tab-link" onclick="openTab(event, 'conclusion')">Conclusión</button>
+        <button class="tab-link" onclick="openTab(event, 'quiz')">Quiz/Juego</button>
+    </div>
+
+    <div id="intro" class="tab-content active">
+        <h2>Introducción</h2>
+        <div class="card">
+            <p><strong>El Desafío:</strong> Te encuentras dirigiendo el departamento de innovación pedagógica en una institución educativa de alto prestigio. Sin embargo, los reportes de rendimiento muestran una desconexión crítica: los estudiantes están físicamente presentes, pero sus mentes parecen estar en "modo avión". Los docentes reportan falta de retención, distracciones constantes y una desmotivación generalizada.</p>
+            <p>¿Es un problema de los estudiantes o de cómo estamos diseñando la enseñanza? Para resolverlo, debemos sumergirnos en los <strong>Dispositivos Básicos del Aprendizaje (DBA)</strong>. En esta unidad, no solo analizaremos la memoria o la atención como conceptos aislados, sino como procesos neurobiológicos (como el sistema SARA o las redes de Posner) que determinan si un aprendizaje se consolida o se pierde en el olvido.</p>
+            <p>Tu misión es diseñar una propuesta de intervención curricular que armonice la neurobiología de la percepción y la motivación con estrategias de aula disruptivas.</p>
+        </div>
+    </div>
+
+    <div id="objetivos" class="tab-content">
+        <h2>Objetivos de Aprendizaje</h2>
+        <ul>
+            <li><strong>Sintetizar</strong> los mecanismos neurobiológicos de la memoria, atención, percepción y motivación para fundamentar prácticas pedagógicas.</li>
+            <li><strong>Evaluar</strong> la influencia de las neuronas espejo y el sistema dopaminérgico en el clima de aula y la empatía docente-estudiante.</li>
+            <li><strong>Diseñar</strong> una propuesta de intervención que incorpore "recreos mentales" y estrategias de "sorprendizaje" basadas en modelos clínicos y atencionales.</li>
+            <li><strong>Integrar</strong> herramientas de IA generativa para la creación de materiales que estimulen selectivamente el Sistema Activador Reticular Ascendente (SARA).</li>
+        </ul>
+    </div>
+
+    <div id="tarea" class="tab-content">
+        <h2>La Tarea: "Manual de Neuro-Intervención"</h2>
+        <p>Como equipo de consultores, deben entregar una <strong>Revista Digital Interactiva</strong> (formato Canva o Genially) dirigida a docentes de nivel básico/medio.</p>
+        <div class="role-grid">
+            <div class="card">
+                <h3>🔍 Investigador Neuro-Educativo</h3>
+                <p>Responsable de la precisión científica. Debe asegurar que se expliquen correctamente los modelos de Posner y la tipología de la memoria según APA 7.</p>
+            </div>
+            <div class="card">
+                <h3>🎨 Diseñador de Experiencias</h3>
+                <p>Encargado de la estética y usabilidad de la revista. Debe aplicar principios de percepción visual (Gestalt) en el diseño de los recursos.</p>
+            </div>
+            <div class="card">
+                <h3>✍️ Redactor Pedagógico</h3>
+                <p>Traduce los conceptos complejos a lenguaje docente práctico, proponiendo actividades reales de "sorprendizaje".</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="proceso" class="tab-content">
+        <h2>Proceso Paso a Paso</h2>
+        <ol>
+            <li><strong>Exploración:</strong> Revisen los documentos sobre Memoria, Motivación, Atención y Percepción proporcionados en la unidad.</li>
+            <li><strong>Lluvia de Ideas con IA:</strong> Utilicen una IA (como Gemini o ChatGPT) para generar 5 ejemplos de "recreos mentales" que podrían aplicarse en una clase de matemáticas o lenguaje. <em>Prompt sugerido: "Actúa como neuroeducador y sugiere pausas activas para estimular funciones ejecutivas..."</em></li>
+            <li><strong>Desarrollo de Contenidos:</strong> Dividan la revista en secciones que correspondan a los 4 DBA analizados.</li>
+            <li><strong>Curación de Evidencia:</strong> Seleccionen casos reales donde la falta de atención ejecutiva o la desmotivación por falta de dopamina afecten el aula.</li>
+            <li><strong>Publicación:</strong> Integren enlaces a videos o juegos interactivos creados por ustedes en la herramienta digital elegida.</li>
+        </ol>
+    </div>
+
+    <div id="recursos" class="tab-content">
+        <h2>Recursos Seleccionados</h2>
+        <ul>
+            <li><a href="https://www.youtube.com/watch?v=jEUUpLlNZ3U" target="_blank">Video 1: Neurociencia del Aprendizaje</a> (Contextualización de procesos cognitivos).</li>
+            <li><a href="https://www.youtube.com/watch?v=Vu6xM229q9I" target="_blank">Video 2: El poder de la atención</a> (Estrategias de concentración).</li>
+            <li><strong>Universidad Da Vinci (2023).</strong> <em>Dispositivos Básicos del Aprendizaje: La Memoria y sus procesos.</em> [Documento de Lectura].</li>
+            <li><strong>Mora, F. (2017).</strong> <em>Neuroeducación: solo se puede aprender aquello que se ama.</em> [Referencia clave para el apartado de motivación].</li>
+        </ul>
+    </div>
+
+    <div id="evaluacion" class="tab-content">
+        <h2>Rúbrica de Evaluación</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Criterio</th>
+                    <th>Excelente (4)</th>
+                    <th>Bueno (3)</th>
+                    <th>Suficiente (2)</th>
+                    <th>Insuficiente (1)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Contextualización</strong></td>
+                    <td>Problema real perfectamente definido y resuelto.</td>
+                    <td>Define el problema pero la solución es genérica.</td>
+                    <td>Menciona el problema sin profundizar.</td>
+                    <td>No identifica un problema real.</td>
+                </tr>
+                <tr>
+                    <td><strong>Precisión Neurocientífica</strong></td>
+                    <td>Usa terminología técnica (SARA, Posner, Dopamina) con total exactitud.</td>
+                    <td>Usa terminología técnica pero con errores menores.</td>
+                    <td>Conceptos muy básicos o poco claros.</td>
+                    <td>Errores conceptuales graves.</td>
+                </tr>
+                <tr>
+                    <td><strong>Colaboración</strong></td>
+                    <td>Roles definidos y trabajo integrado.</td>
+                    <td>Roles definidos pero trabajo fragmentado.</td>
+                    <td>Evidencia de poca coordinación.</td>
+                    <td>No hay rastro de trabajo colaborativo.</td>
+                </tr>
+                <tr>
+                    <td><strong>Diseño Visual</strong></td>
+                    <td>Atractivo, legible y aplica principios de percepción.</td>
+                    <td>Limpio pero predecible.</td>
+                    <td>Poco estético o difícil de leer.</td>
+                    <td>Diseño descuidado o inexistente.</td>
+                </tr>
+                <tr>
+                    <td><strong>Citación APA 7</strong></td>
+                    <td>Todas las citas y referencias son perfectas.</td>
+                    <td>Errores menores en formato de citas.</td>
+                    <td>Faltan referencias importantes.</td>
+                    <td>No cita fuentes.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="neuropedagogia" class="tab-content">
+        <h2>Sugerencias Neuropedagógicas para la Práctica</h2>
+        <div class="neuro-box">
+            <ul>
+                <li><strong>Activar el SARA:</strong> Inicie sus clases con un "gancho" emocional o una pregunta disruptiva para que el Sistema Activador Reticular permita el paso de la información al cortex.</li>
+                <li><strong>Ciclos de Atención:</strong> Respete el modelo de Posner; la atención sostenida no es infinita. Implemente <em>recreos mentales</em> cada 20-30 minutos para resetear las funciones ejecutivas.</li>
+                <li><strong>Dopamina vs Cortisol:</strong> Un ambiente de estrés (cortisol) bloquea el hipocampo. Fomente la curiosidad y el feedback positivo para liberar dopamina y facilitar la consolidación de la memoria.</li>
+                <li><strong>Aprendizaje Multisensorial:</strong> La percepción es selectiva y subjetiva. Use diversos canales (visual, auditivo, kinestésico) para asegurar que el estímulo sea captado por todos los estudiantes.</li>
+                <li><strong>Empatía y Neuronas Espejo:</strong> Su estado emocional como docente se contagia. La empatía no es solo un valor, es una red neurobiológica que facilita la conexión con el conocimiento.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="conclusion" class="tab-content">
+        <h2>Conclusión y Reflexión</h2>
+        <p>¿Por qué es vital conocer los DBA? La respuesta radica en que <strong>no podemos enseñar a un cerebro que no comprendemos</strong>. Conocer los Dispositivos Básicos del Aprendizaje permite al docente dejar de ser un transmisor de datos para convertirse en un arquitecto de experiencias cerebrales.</p>
+        <div style="text-align:center;">
+            <img src="https://images.unsplash.com/photo-1507413245164-6160d8298b31?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Cerebro y Aprendizaje" style="max-width:100%; border-radius: 8px; margin: 20px 0;">
+            <p><em>"La educación es el proceso de esculpir el cerebro a través de la experiencia y la emoción."</em></p>
+        </div>
+    </div>
+
+    <div id="quiz" class="tab-content">
+        <h2>Verifica tu Aprendizaje</h2>
+        <div class="quiz-container">
+            <div class="question" id="q1">
+                <p><strong>1. ¿Qué neurotransmisor es clave en el circuito motivacional y la recompensa?</strong></p>
+                <input type="radio" name="p1" value="0"> Serotonina<br>
+                <input type="radio" name="p1" value="1"> Dopamina<br>
+                <input type="radio" name="p1" value="0"> Cortisol
+            </div>
+            <div class="question">
+                <p><strong>2. El SARA filtra el 95% de los estímulos para priorizar la supervivencia.</strong></p>
+                <input type="radio" name="p2" value="1"> Verdadero<br>
+                <input type="radio" name="p2" value="0"> Falso
+            </div>
+            <button class="check-btn" onclick="checkQuiz()">Validar Respuestas</button>
+        </div>
+        
+        <h3>Desafío Lúdico</h3>
+        <p>Completa el siguiente reto para consolidar tus conocimientos de la unidad:</p>
+        <iframe src="https://es.educaplay.com/recursos-educativos/14981440-dispositivos_basicos_del_aprendizaje.html" allowfullscreen></iframe>
+    </div>
+</div>
+
+<script>
+    function openTab(evt, tabName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tab-link");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+
+    function checkQuiz() {
+        let score = 0;
+        const q1 = document.querySelector('input[name="p1"]:checked');
+        const q2 = document.querySelector('input[name="p2"]:checked');
+
+        if (q1 && q1.value == "1") score++;
+        if (q2 && q2.value == "1") score++;
+
+        alert("Tu puntuación es: " + score + "/2. Sigue explorando los DBA.");
+    }
+</script>
+
+</body>
+</html>
